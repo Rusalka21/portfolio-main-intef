@@ -1,0 +1,286 @@
+/*Imports*/
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+
+/*Varibables*/
+:root {
+  --main-red: #f64740;
+  --text-white: #eee;
+  --main-blue: #477998;
+  --background-1: #291F1E;
+  --decorative-gold: #DAA520;  
+  --alternative-red: #a3333d;
+}
+
+/*Base reset*/
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/*box-sizing and font sizing*/
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box; 
+    /* Set font size for easy rem calculations
+    * default document font size = 16px, 1rem = 16px, 100% = 16px
+    * (100% / 16px) * 10 = 62.5%, 1rem = 10px, 62.5% = 10px
+    */
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+/* A few media query to set some font sizes at different screen sizes.
+ * This helps automate a bit of responsiveness.
+ * The trick is to use the rem unit for size values, margin and padding.
+ * Because rem is relative to the document font size
+ * when we scale up or down the font size on the document
+ * it will affect all properties using rem units for the values.
+*/
+
+/* I am using the em unit for breakpoints
+ * The calculation is the following
+ * screen size divided by browser base font size
+ * As an example: a breakpoint at 980px
+ * 980px / 16px = 61.25em
+*/
+
+/* 1200px / 16px = 75em */
+@media (max-width: 75em) {
+    html {
+      font-size: 60%;
+    }
+  }
+
+/* 980px / 16px = 61.25em */
+@media (max-width: 61.25em) {
+    html {
+      font-size: 58%;
+    }
+  }  
+
+/* 460px / 16px = 28.75em */
+@media (max-width: 28.75em) {
+    html {
+      font-size: 55%;
+    }
+  }
+
+/*Base styling*/
+body {
+  font-family: "Roboto Flex", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 2rem;
+}
+
+h1,
+h2 {
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+/*nav*/
+#navbar {
+  display: flex;
+  justify-content: flex-end;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--main-red); 
+  box-shadow: 5px 0px 5px var(--background-1);
+  z-index: 1; 
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  margin-right: 2rem;  
+}
+
+.nav-link {
+  display: block;
+  text-decoration: none;
+  font-size: 2.2rem;
+  font-weight: 500;
+  color: var(--text-white);
+  padding: 2rem;  
+  transition: 1s;
+}
+
+.nav-link:hover {
+  background-color: var(--main-blue);  
+}
+
+/*Welcome section*/
+
+#welcome-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  height: 100vh;
+  width: 100%;
+  background-color: #000;
+  background-image: linear-gradient(62deg, var(--background-1) 0%, #181719 100%);
+}
+
+.welcome-section-text {
+  text-align: center;
+}
+
+.welcome-section-text h1 {
+  color: var(--text-white);
+  font-size: 5.5rem;  
+}
+
+.name .code-accessory{
+  transition: 1s;
+}
+
+.name:hover .code-accessory {
+  color: var(--decorative-gold);
+}
+
+.welcome-section-text p {
+  color: var(--main-red);
+  font-size: 3rem;
+  margin-top: 1.5rem;
+}
+
+/*Projects section*/
+
+#projects {    
+  text-align: center;
+  padding: 8rem 2rem;
+  background: var(--main-blue);  
+}
+
+.projects-section-title {
+  max-width: 640px;
+  margin: 0 auto 6rem auto;  
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(410px, 1fr));
+  gap: 4rem;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.project-tile {
+  background: var(--background-1);
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  text-decoration: none;  
+  transition: 0.3s;  
+}
+
+@media (max-width: 57em) {  
+
+  .projects-grid {    
+    grid-template-columns: repeat(auto-fit, minmax(410px, 700px)); 
+    justify-content: center;        
+  }
+
+}
+
+.project-image {    
+  height: calc(100% - 7rem);
+  width: 100%;
+  object-fit: cover;  
+}
+
+.project-title {
+  font-size: 2rem;  
+  color: var(--text-white); 
+  margin-top: 2rem;
+}
+
+.project-tile:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 25px var(--decorative-gold);
+}
+
+.project-tile:hover .project-title {
+  color: var(--decorative-gold);
+}
+
+/*Contacts section*/
+
+#contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--text-white);
+  height: 85vh;
+  width: 100%;
+  text-align: center;
+  padding: 8rem 2rem;
+  background-color: #000;
+  background-image: linear-gradient(62deg, var(--background-1) 0%, #181719 100%);
+}
+
+.contact-section-title {
+  font-size: 5rem;
+}
+
+.contact-items {
+  display: flex;
+  justify-content: space-evenly;  
+  margin-top: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;   
+}
+
+.contact-item {
+  font-size: 2.5rem;
+  text-decoration: none;
+  color: var(--text-white);
+  transition: 0.5s;
+}
+/*
+@media(max-width: 50em) {
+  .contact-items {
+    width: 90%;
+  }
+}
+*/
+
+.contact-item:hover {  
+  color: var(--decorative-gold);
+  transform: translateY(5px);
+}
+
+/*Footer section*/
+
+footer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0 12rem 0 12rem;
+  height: 15vh;
+  width: 100%;
+  background-color: #000;
+  background-image: linear-gradient(62deg, var(--background-1) 0%, #181719 100%);
+  border-top: solid var(--main-red);
+}
+
+footer p {
+  color: var(--text-white);   
+}
